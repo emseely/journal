@@ -5,8 +5,8 @@ const { Entry, Author } = require("../db");
 //get all journal entries
 router.get("/", async (req, res, next) => {
   try {
-    const entries = await Entry.findAll();
-    res.json(entries);
+    const authors = await Author.findAll();
+    res.json(authors);
   } catch (err) {
     next(err);
   }
@@ -14,13 +14,13 @@ router.get("/", async (req, res, next) => {
 //get entry by id
 router.get("/:id", async (req, res, next) => {
   try {
-    const entry = await Entry.findOne({
+    const author = await Author.findOne({
       where: {
         id: req.params.id,
       },
-      include: Author,
+      include: Entry,
     });
-    res.json(entry);
+    res.json(author);
   } catch (err) {
     next(err);
   }
@@ -29,10 +29,8 @@ router.get("/:id", async (req, res, next) => {
 //post new entry
 router.post("/", async (req, res, next) => {
   try {
-    const { title, imageUrl, content, tags, date } = req.body;
-    res
-      .status(201)
-      .json(await Entry.create({ title, imageUrl, content, tags, date }));
+    const { handle, imageUrl, bio } = req.body;
+    res.status(201).json(await Author.create({ handle, imageUrl, bio }));
   } catch (err) {
     next(err);
   }
@@ -41,7 +39,7 @@ router.post("/", async (req, res, next) => {
 //delete entry
 router.delete("/:id", async (req, res, next) => {
   try {
-    await Entry.destroy({ where: { id: req.params.id } });
+    await Author.destroy({ where: { id: req.params.id } });
     res.status(204).send("deleted");
   } catch (err) {
     next(err);
@@ -50,25 +48,24 @@ router.delete("/:id", async (req, res, next) => {
 
 router.put("/:id", async (req, res, next) => {
   try {
-    const entry = await Entry.findOne({
+    const author = await Author.findOne({
       where: {
         id: req.params.id,
       },
     });
-    if (entry) {
-      let { newTitle, newContent, newTags, newDate } = req.body;
+    if (author) {
+      let { newHandle, newImageUrl, newBio } = req.body;
 
-      if (!newTitle) newTitle = entry.title;
-      if (!newContent) newContent = entry.content;
-      if (!newTags) newTags = entry.tags;
+      if (!newHandle) newHandle = author.handle;
+      if (!newImageUrl) newImageUrlt = author.imageUrl;
+      if (!newBio) newBio = author.bio;
 
-      await entry.update({
-        title: newTitle,
-        content: newContent,
-        tags: newTags,
-        date: new Date(),
+      await author.update({
+        handle: newHandle,
+        imageUrl: mewImageUrl,
+        bio: newBio,
       });
-      res.status(201).json(entry);
+      res.status(201).json(author);
     } else {
       res.sendStatus(404);
     }
