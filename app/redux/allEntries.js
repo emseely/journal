@@ -1,6 +1,8 @@
 import axios from "axios";
 import entry from "../../server/db/entry";
 
+const initialState = { entries: [] };
+
 const GET_ENTRIES = "GET_ENTRIES";
 const NEW_ENTRY = "NEW_ENTRY";
 const REMOVE_ENTRY = "REMOVE_ENTRY";
@@ -51,3 +53,21 @@ const deleteEntry = (entry) => {
     dispatch(removeEntry(entry));
   };
 };
+
+export default function entriesReducer(state = initialState, action) {
+  switch (action.type) {
+    case GET_ENTRIES:
+      return { ...state, entries: action.entries };
+
+    case NEW_ENTRY:
+      return { ...state, entries: [state.entries, action.entry] };
+
+    case REMOVE_ENTRY:
+      return {
+        ...state,
+        entries: state.entries.filter((entry) => entry.id !== action.entry.id),
+      };
+    default:
+      return state;
+  }
+}
