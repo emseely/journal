@@ -102,6 +102,8 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactDom = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
 var _reactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 
 var _store = __webpack_require__(/*! ./store */ "./app/store.js");
@@ -112,7 +114,15 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 // import Routes from "./components/Routes";
 
-(0, _reactDom.render)(_react2.default.createElement(_reactRedux.Provider, { store: _store2.default }), document.getElementById("main"));
+_reactDom2.default.render(_react2.default.createElement(
+  _reactRedux.Provider,
+  { store: _store2.default },
+  _react2.default.createElement(
+    "div",
+    null,
+    "hello world"
+  )
+), document.getElementById("app"));
 
 /***/ }),
 

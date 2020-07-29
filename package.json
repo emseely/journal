@@ -2,14 +2,13 @@
   "name": "journal",
   "version": "1.0.0",
   "description": "",
-  "main": "seed.js",
+  "main": "./server/index.js",
+  "engines": {
+    "node": "~12.11.1"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start-dev": "npm run build-watch & npm run start-server",
-    "start-server": "nodemon main.js -e html,js,css --ignore public",
-    "build": "webpack app/main.js -o bundle.js",
-    "build-watch": "webpack -w",
-    "start": "echo 'Running server for production - developers, use npm run start-dev for development' && node main",
+    "start": "node server",
+    "start-dev": "webpack -w & nodemon server.js",
     "seed": "node seed.js"
   },
   "repository": {
@@ -34,6 +33,7 @@
     "chalk": "^2.4.1",
     "express": "^4.14.0",
     "lodash": "^4.17.19",
+    "morgan": "^1.10.0",
     "pg": "^7.4.3",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",

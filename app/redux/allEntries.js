@@ -39,7 +39,7 @@ const fetchEntries = () => {
 const addNewEntry = (entry) => {
   return async (dispatch) => {
     try {
-      const { data } = await axios.post("/");
+      const { data } = await axios.post("/api/entries");
       dispatch(newEntry(data));
     } catch (err) {
       console.log(err);

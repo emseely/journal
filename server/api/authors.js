@@ -73,3 +73,5 @@ router.put("/:id", async (req, res, next) => {
     next(err);
   }
 });
+
+module.exports = router;
