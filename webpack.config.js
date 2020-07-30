@@ -1,6 +1,7 @@
 "use strict";
 
 const { resolve } = require("path");
+var webpack = require("webpack");
 
 module.exports = {
   entry: ["babel-polyfill", "./app/main"],
@@ -13,7 +14,13 @@ module.exports = {
   devtool: "source-map",
   resolve: {
     extensions: [".js", ".jsx"],
+    // alias: {
+    //   ...
+    //   'pg-native': ./dummy,
+    //   'dns': path-to-dummy-js-file
+    // }
   },
+
   module: {
     rules: [
       {

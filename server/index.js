@@ -2,6 +2,7 @@ const express = require("express");
 const path = require("path");
 const morgan = require("morgan");
 const app = express();
+const { db } = require("./db");
 const bodyParser = require("body-parser");
 
 //logging middleware
@@ -27,12 +28,18 @@ app.use((err, req, res, next) => {
   res.status(err.status || 500).send(err.message || "Internal server error");
 });
 
-const port = process.env.PORT || 3030;
+const PORT = process.env.PORT || 3030;
 
-app.listen(port, function () {
-  console.log("Knock, knock");
-  console.log("Who's there?");
-  console.log(`Your server, listening on port ${port}`);
-});
+async function startServer() {
+  try {
+    await db.sync();
+    app.listen(PORT, () => {
+      console.log(`Journaling on port ${PORT}`);
+    });
+  } catch (err) {
+    console.error(err);
+  }
+}
+startServer();
 
 module.exports = app;

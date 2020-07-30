@@ -34,7 +34,10 @@
     "express": "^4.14.0",
     "lodash": "^4.17.19",
     "morgan": "^1.10.0",
-    "pg": "^7.4.3",
+    "pg": "^7.18.2",
+    "pg-hstore": "^2.3.3",
+    "pg-native": "^3.0.0",
+    "pg-pool": "^3.2.1",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
     "react-redux": "^5.0.7",
@@ -43,7 +46,8 @@
     "redux": "^4.0.0",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.2.0",
-    "sequelize": "^5.21.5"
+    "sequelize": "^5.22.3",
+    "dns": "file:./mock/mock-dns"
   },
   "devDependencies": {
     "@babel/core": "^7.10.5",
