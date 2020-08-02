@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { fetchEntries } from "../redux/allEntries";
+
 class AllEntries extends React.Component {
   constructor() {
     super();
@@ -13,13 +14,16 @@ class AllEntries extends React.Component {
   render() {
     const entries = this.props.entries;
     console.log(entries);
+
     return (
       <div>
         HELO
         <div>
           {entries.map((entry) => (
             <Link to={`/entries/${entry.id}`} key={entry.id}>
-              <div>{entry.title} by </div>
+              <div>
+                {entry.title} by {entry.author ? entry.author.name : "Anonymus"}
+              </div>
             </Link>
           ))}
         </div>

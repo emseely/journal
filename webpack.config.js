@@ -7,6 +7,7 @@ module.exports = {
   entry: ["babel-polyfill", "./app/main"],
   output: {
     path: __dirname,
+
     filename: "./public/bundle.js",
   },
   mode: "development",
@@ -14,11 +15,6 @@ module.exports = {
   devtool: "source-map",
   resolve: {
     extensions: [".js", ".jsx"],
-    // alias: {
-    //   ...
-    //   'pg-native': ./dummy,
-    //   'dns': path-to-dummy-js-file
-    // }
   },
 
   module: {

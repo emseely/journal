@@ -5,7 +5,7 @@ const { Entry, Author } = require("../db");
 //get all journal entries
 router.get("/", async (req, res, next) => {
   try {
-    const entries = await Entry.findAll();
+    const entries = await Entry.findAll({ include: Author });
 
     res.json(entries);
   } catch (err) {

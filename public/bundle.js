@@ -139,6 +139,7 @@ var AllEntries = function (_React$Component) {
     value: function render() {
       var entries = this.props.entries;
       console.log(entries);
+
       return _react2.default.createElement(
         "div",
         null,
@@ -154,7 +155,8 @@ var AllEntries = function (_React$Component) {
                 "div",
                 null,
                 entry.title,
-                " by "
+                " by ",
+                entry.author ? entry.author.name : "Anonymus"
               )
             );
           })

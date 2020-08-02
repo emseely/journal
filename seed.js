@@ -6,6 +6,7 @@ const entries = [
     title: "Test One",
     content: "Test one!",
     tags: ["TEST", "ONE"],
+    authorId: 1,
   },
   {
     title: "Test Two",
