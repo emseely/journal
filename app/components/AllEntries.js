@@ -12,7 +12,7 @@ class AllEntries extends React.Component {
   }
 
   render() {
-    const entries = this.props.entries;
+    const { entries } = this.props.entries;
     console.log(entries);
 
     return (

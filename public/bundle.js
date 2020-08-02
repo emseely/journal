@@ -137,7 +137,8 @@ var AllEntries = function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var entries = this.props.entries;
+      var entries = this.props.entries.entries;
+
       console.log(entries);
 
       return _react2.default.createElement(
@@ -249,6 +250,10 @@ var _AllEntries = __webpack_require__(/*! ./AllEntries */ "./app/components/AllE
 
 var _AllEntries2 = _interopRequireDefault(_AllEntries);
 
+var _SingleEntry = __webpack_require__(/*! ./SingleEntry */ "./app/components/SingleEntry.js");
+
+var _SingleEntry2 = _interopRequireDefault(_SingleEntry);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Routes = function Routes() {
@@ -266,7 +271,8 @@ var Routes = function Routes() {
           _reactRouterDom.Switch,
           null,
           _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: "/", component: _Home2.default }),
-          _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: "/entries", component: _AllEntries2.default })
+          _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: "/entries", component: _AllEntries2.default }),
+          _react2.default.createElement(_reactRouterDom.Route, { path: "/entries/:id", component: _SingleEntry2.default })
         )
       )
     )
@@ -274,6 +280,63 @@ var Routes = function Routes() {
 };
 
 exports.default = Routes;
+
+/***/ }),
+
+/***/ "./app/components/SingleEntry.js":
+/*!***************************************!*\
+  !*** ./app/components/SingleEntry.js ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var SingleEntry = function (_React$Component) {
+  _inherits(SingleEntry, _React$Component);
+
+  function SingleEntry() {
+    _classCallCheck(this, SingleEntry);
+
+    return _possibleConstructorReturn(this, (SingleEntry.__proto__ || Object.getPrototypeOf(SingleEntry)).call(this));
+  }
+
+  _createClass(SingleEntry, [{
+    key: "render",
+    value: function render() {
+      return _react2.default.createElement(
+        "div",
+        null,
+        "hi"
+      );
+    }
+  }]);
+
+  return SingleEntry;
+}(_react2.default.Component);
+
+exports.default = (0, _reactRedux.connect)(null, null)(SingleEntry);
 
 /***/ }),
 
@@ -510,6 +573,187 @@ function entriesReducer() {
 
 /***/ }),
 
+/***/ "./app/redux/index.js":
+/*!****************************!*\
+  !*** ./app/redux/index.js ***!
+  \****************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _redux = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
+
+var _allEntries = __webpack_require__(/*! ./allEntries */ "./app/redux/allEntries.js");
+
+var _allEntries2 = _interopRequireDefault(_allEntries);
+
+var _singleEntry = __webpack_require__(/*! ./singleEntry */ "./app/redux/singleEntry.js");
+
+var _singleEntry2 = _interopRequireDefault(_singleEntry);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var appReducer = (0, _redux.combineReducers)({
+  entries: _allEntries2.default,
+  entry: _singleEntry2.default
+});
+
+exports.default = appReducer;
+
+/***/ }),
+
+/***/ "./app/redux/singleEntry.js":
+/*!**********************************!*\
+  !*** ./app/redux/singleEntry.js ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.updateThisEntry = exports.fetchSingleEntry = undefined;
+exports.default = singleEntryReducer;
+
+var _axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+
+var _axios2 = _interopRequireDefault(_axios);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+
+var SELECT_ENTRY = "SELECT_ENTRY";
+var UPDATE_ENTRY = "UPDATE_ENTRY";
+
+var initialState = {};
+
+var selectEntry = function selectEntry(entry) {
+  return {
+    type: SELECT_ENTRY,
+    entry: entry
+  };
+};
+
+var updateEntry = function updateEntry(entry) {
+  return {
+    type: UPDATE_ENTRY,
+    entry: entry
+  };
+};
+
+var fetchSingleEntry = exports.fetchSingleEntry = function fetchSingleEntry(entry) {
+  return function () {
+    var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(dispatch) {
+      var _ref2, data;
+
+      return regeneratorRuntime.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _context.prev = 0;
+              _context.next = 3;
+              return _axios2.default.get("/api/entries/" + entry.id);
+
+            case 3:
+              _ref2 = _context.sent;
+              data = _ref2.data;
+
+              dispatch(delectEntry(data));
+              _context.next = 11;
+              break;
+
+            case 8:
+              _context.prev = 8;
+              _context.t0 = _context["catch"](0);
+
+              console.log(_context.t0);
+
+            case 11:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee, undefined, [[0, 8]]);
+    }));
+
+    return function (_x) {
+      return _ref.apply(this, arguments);
+    };
+  }();
+};
+
+var updateThisEntry = exports.updateThisEntry = function updateThisEntry(entry) {
+  return function () {
+    var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(dispatch) {
+      var _ref4, data;
+
+      return regeneratorRuntime.wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              _context2.prev = 0;
+              _context2.next = 3;
+              return _axios2.default.put("/api/entries/" + entry.id, {
+                newTitle: entry.title,
+                newImageUrl: entry.imageUrl,
+                newContent: entry.content,
+                newTags: entry.tags
+              });
+
+            case 3:
+              _ref4 = _context2.sent;
+              data = _ref4.data;
+
+              dispatch(updateEntry(data));
+              _context2.next = 11;
+              break;
+
+            case 8:
+              _context2.prev = 8;
+              _context2.t0 = _context2["catch"](0);
+
+              console.log(_context2.t0);
+
+            case 11:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2, undefined, [[0, 8]]);
+    }));
+
+    return function (_x2) {
+      return _ref3.apply(this, arguments);
+    };
+  }();
+};
+
+function singleEntryReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+  var action = arguments[1];
+
+  switch (action.type) {
+    case SELECT_ENTRY:
+      return action.entry;
+    case UPDATE_ENTRY:
+      return action.campus;
+    default:
+      return state;
+  }
+}
+
+/***/ }),
+
 /***/ "./app/store.js":
 /*!**********************!*\
   !*** ./app/store.js ***!
@@ -526,9 +770,9 @@ Object.defineProperty(exports, "__esModule", {
 
 var _redux = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 
-var _allEntries = __webpack_require__(/*! ./redux/allEntries */ "./app/redux/allEntries.js");
+var _redux2 = __webpack_require__(/*! ./redux */ "./app/redux/index.js");
 
-var _allEntries2 = _interopRequireDefault(_allEntries);
+var _redux3 = _interopRequireDefault(_redux2);
 
 var _reduxThunk = __webpack_require__(/*! redux-thunk */ "./node_modules/redux-thunk/es/index.js");
 
@@ -538,7 +782,7 @@ var _reduxLogger = __webpack_require__(/*! redux-logger */ "./node_modules/redux
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var store = (0, _redux.createStore)(_allEntries2.default, (0, _redux.applyMiddleware)(_reduxThunk2.default, (0, _reduxLogger.createLogger)()));
+var store = (0, _redux.createStore)(_redux3.default, (0, _redux.applyMiddleware)(_reduxThunk2.default, (0, _reduxLogger.createLogger)()));
 
 exports.default = store;
 
