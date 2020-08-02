@@ -1,5 +1,5 @@
 import axios from "axios";
-import entry from "../../server/db/entry";
+// import entry from "../../server/api/entries";
 
 const initialState = { entries: [] };
 
@@ -19,7 +19,7 @@ const newEntry = (entry) => ({
 
 const removeEntry = (entry) => ({ type: REMOVE_ENTRY, entry });
 
-const fetchEntries = () => {
+export const fetchEntries = () => {
   return async (dispatch) => {
     try {
       const { data } = await axios.get("/api/entries", {

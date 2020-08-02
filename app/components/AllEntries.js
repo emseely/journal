@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import { fetchEntries } from "../redux/allEntries";
 class AllEntries extends React.Component {
   constructor() {
     super();
@@ -18,7 +19,7 @@ const mapState = (state) => {
   return { entries: state.entries };
 };
 const mapDispatch = (dispatch) => {
-  return { loadEntries: dispatch(fetchEntries()) };
+  return { loadEntries: () => dispatch(fetchEntries()) };
 };
 
 export default connect(mapState, mapDispatch)(AllEntries);
