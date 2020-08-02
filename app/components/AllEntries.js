@@ -11,7 +11,20 @@ class AllEntries extends React.Component {
   }
 
   render() {
-    return <div>all entries</div>;
+    const entries = this.props.entries;
+    console.log(entries);
+    return (
+      <div>
+        HELO
+        <div>
+          {entries.map((entry) => (
+            <Link to={`/entries/${entry.id}`} key={entry.id}>
+              <div>{entry.title} by </div>
+            </Link>
+          ))}
+        </div>
+      </div>
+    );
   }
 }
 

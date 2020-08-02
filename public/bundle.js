@@ -137,10 +137,28 @@ var AllEntries = function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      var entries = this.props.entries;
+      console.log(entries);
       return _react2.default.createElement(
         "div",
         null,
-        "all entries"
+        "HELO",
+        _react2.default.createElement(
+          "div",
+          null,
+          entries.map(function (entry) {
+            return _react2.default.createElement(
+              _reactRouterDom.Link,
+              { to: "/entries/" + entry.id, key: entry.id },
+              _react2.default.createElement(
+                "div",
+                null,
+                entry.title,
+                " by "
+              )
+            );
+          })
+        )
       );
     }
   }]);
@@ -324,8 +342,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
-// import entry from "../../server/api/entries";
-
 var initialState = { entries: [] };
 
 var GET_ENTRIES = "GET_ENTRIES";
@@ -361,17 +377,12 @@ var fetchEntries = exports.fetchEntries = function fetchEntries() {
             case 0:
               _context.prev = 0;
               _context.next = 3;
-              return _axios2.default.get("/api/entries", {
-                title: entry.title,
-                imageUrl: entry.imageUrl,
-                content: entry.content,
-                tags: entry.tags,
-                date: entry.date
-              });
+              return _axios2.default.get("/api/entries");
 
             case 3:
               _ref2 = _context.sent;
               data = _ref2.data;
+
 
               dispatch(getEntries(data));
               _context.next = 11;
@@ -486,6 +497,14 @@ function entriesReducer() {
       return state;
   }
 }
+
+// {
+//   title: entry.title,
+//   imageUrl: entry.imageUrl,
+//   content: entry.content,
+//   tags: entry.tags,
+//   date: entry.date,
+// }
 
 /***/ }),
 

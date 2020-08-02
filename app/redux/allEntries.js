@@ -1,5 +1,4 @@
 import axios from "axios";
-// import entry from "../../server/api/entries";
 
 const initialState = { entries: [] };
 
@@ -22,13 +21,8 @@ const removeEntry = (entry) => ({ type: REMOVE_ENTRY, entry });
 export const fetchEntries = () => {
   return async (dispatch) => {
     try {
-      const { data } = await axios.get("/api/entries", {
-        title: entry.title,
-        imageUrl: entry.imageUrl,
-        content: entry.content,
-        tags: entry.tags,
-        date: entry.date,
-      });
+      const { data } = await axios.get("/api/entries");
+
       dispatch(getEntries(data));
     } catch (err) {
       console.log(err);
@@ -71,3 +65,11 @@ export default function entriesReducer(state = initialState, action) {
       return state;
   }
 }
+
+// {
+//   title: entry.title,
+//   imageUrl: entry.imageUrl,
+//   content: entry.content,
+//   tags: entry.tags,
+//   date: entry.date,
+// }
