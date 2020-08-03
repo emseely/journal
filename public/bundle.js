@@ -305,6 +305,8 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 
+var _singleEntry = __webpack_require__(/*! ../redux/singleEntry */ "./app/redux/singleEntry.js");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -323,12 +325,29 @@ var SingleEntry = function (_React$Component) {
   }
 
   _createClass(SingleEntry, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      try {
+        this.props.loadEntry(this.props.match.params.id);
+      } catch (err) {
+        console.error(err);
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
+      var entry = this.props.entry;
+      if (!entry.id) {
+        return _react2.default.createElement(
+          "div",
+          null,
+          "Not found!"
+        );
+      }
       return _react2.default.createElement(
         "div",
         null,
-        "hi"
+        entry.title
       );
     }
   }]);
@@ -336,7 +355,16 @@ var SingleEntry = function (_React$Component) {
   return SingleEntry;
 }(_react2.default.Component);
 
-exports.default = (0, _reactRedux.connect)(null, null)(SingleEntry);
+var mapState = function mapState(state) {
+  return { entry: state.entry };
+};
+
+var mapDispatch = function mapDispatch(dispatch) {
+  return { loadEntry: function loadEntry(id) {
+      return dispatch((0, _singleEntry.fetchSingleEntry)(id));
+    } };
+};
+exports.default = (0, _reactRedux.connect)(mapState, mapDispatch)(SingleEntry);
 
 /***/ }),
 
@@ -651,7 +679,7 @@ var updateEntry = function updateEntry(entry) {
   };
 };
 
-var fetchSingleEntry = exports.fetchSingleEntry = function fetchSingleEntry(entry) {
+var fetchSingleEntry = exports.fetchSingleEntry = function fetchSingleEntry(id) {
   return function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(dispatch) {
       var _ref2, data;
@@ -662,13 +690,13 @@ var fetchSingleEntry = exports.fetchSingleEntry = function fetchSingleEntry(entr
             case 0:
               _context.prev = 0;
               _context.next = 3;
-              return _axios2.default.get("/api/entries/" + entry.id);
+              return _axios2.default.get("/api/entries/" + id);
 
             case 3:
               _ref2 = _context.sent;
               data = _ref2.data;
 
-              dispatch(delectEntry(data));
+              dispatch(selectEntry(data));
               _context.next = 11;
               break;
 

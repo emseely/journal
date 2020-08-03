@@ -3,8 +3,8 @@ import entries from "./allEntries";
 import entry from "./singleEntry";
 
 const appReducer = combineReducers({
-  entries,
-  entry,
+  entries: entries,
+  entry: entry,
 });
 
 export default appReducer;

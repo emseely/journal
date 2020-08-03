@@ -18,11 +18,11 @@ const updateEntry = (entry) => {
   };
 };
 
-export const fetchSingleEntry = (entry) => {
+export const fetchSingleEntry = (id) => {
   return async (dispatch) => {
     try {
-      const { data } = await axios.get(`/api/entries/${entry.id}`);
-      dispatch(delectEntry(data));
+      const { data } = await axios.get(`/api/entries/${id}`);
+      dispatch(selectEntry(data));
     } catch (err) {
       console.log(err);
     }
