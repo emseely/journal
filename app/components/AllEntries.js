@@ -17,12 +17,12 @@ class AllEntries extends React.Component {
 
     return (
       <div>
-        HELO
         <div>
           {entries.map((entry) => (
             <Link to={`/entries/${entry.id}`} key={entry.id}>
               <div>
-                {entry.title} by {entry.author ? entry.author.name : "Anonymus"}
+                {entry.title} by{" "}
+                {entry.author ? entry.author.handle : "Anonymus"}
               </div>
             </Link>
           ))}

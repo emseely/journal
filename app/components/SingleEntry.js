@@ -15,7 +15,7 @@ class SingleEntry extends React.Component {
   }
   render() {
     const entry = this.props.entry;
-
+    let author = entry.author ? entry.author.handle : " Anonymous";
     if (!entry.id) {
       return <div>Not found!</div>;
     }
@@ -24,7 +24,7 @@ class SingleEntry extends React.Component {
     return (
       <div>
         <div>{entry.title}</div>
-
+        <div>by {author}</div>
         <div>{entry.date}</div>
         <img src={entry.imageUrl} />
         <div>{entry.content}</div>

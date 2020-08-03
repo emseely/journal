@@ -144,7 +144,6 @@ var AllEntries = function (_React$Component) {
       return _react2.default.createElement(
         "div",
         null,
-        "HELO",
         _react2.default.createElement(
           "div",
           null,
@@ -156,8 +155,9 @@ var AllEntries = function (_React$Component) {
                 "div",
                 null,
                 entry.title,
-                " by ",
-                entry.author ? entry.author.name : "Anonymus"
+                " by",
+                " ",
+                entry.author ? entry.author.handle : "Anonymus"
               )
             );
           })
@@ -337,7 +337,7 @@ var SingleEntry = function (_React$Component) {
     key: "render",
     value: function render() {
       var entry = this.props.entry;
-
+      var author = entry.author ? entry.author.handle : " Anonymous";
       if (!entry.id) {
         return _react2.default.createElement(
           "div",
@@ -354,6 +354,12 @@ var SingleEntry = function (_React$Component) {
           "div",
           null,
           entry.title
+        ),
+        _react2.default.createElement(
+          "div",
+          null,
+          "by ",
+          author
         ),
         _react2.default.createElement(
           "div",
