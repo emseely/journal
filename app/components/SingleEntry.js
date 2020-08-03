@@ -15,10 +15,21 @@ class SingleEntry extends React.Component {
   }
   render() {
     const entry = this.props.entry;
+
     if (!entry.id) {
       return <div>Not found!</div>;
     }
-    return <div>{entry.title}</div>;
+
+    console.log("entry", entry);
+    return (
+      <div>
+        <div>{entry.title}</div>
+
+        <div>{entry.date}</div>
+        <img src={entry.imageUrl} />
+        <div>{entry.content}</div>
+      </div>
+    );
   }
 }
 

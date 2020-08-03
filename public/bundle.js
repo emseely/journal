@@ -337,6 +337,7 @@ var SingleEntry = function (_React$Component) {
     key: "render",
     value: function render() {
       var entry = this.props.entry;
+
       if (!entry.id) {
         return _react2.default.createElement(
           "div",
@@ -344,10 +345,27 @@ var SingleEntry = function (_React$Component) {
           "Not found!"
         );
       }
+
+      console.log("entry", entry);
       return _react2.default.createElement(
         "div",
         null,
-        entry.title
+        _react2.default.createElement(
+          "div",
+          null,
+          entry.title
+        ),
+        _react2.default.createElement(
+          "div",
+          null,
+          entry.date
+        ),
+        _react2.default.createElement("img", { src: entry.imageUrl }),
+        _react2.default.createElement(
+          "div",
+          null,
+          entry.content
+        )
       );
     }
   }]);
