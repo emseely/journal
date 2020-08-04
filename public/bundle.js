@@ -86,6 +86,33 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./app/components/About.js":
+/*!*********************************!*\
+  !*** ./app/components/About.js ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = About;
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function About() {
+  return _react2.default.createElement("div", { id: "about" });
+}
+
+/***/ }),
+
 /***/ "./app/components/AllEntries.js":
 /*!**************************************!*\
   !*** ./app/components/AllEntries.js ***!
@@ -143,7 +170,12 @@ var AllEntries = function (_React$Component) {
 
       return _react2.default.createElement(
         "div",
-        null,
+        { className: "all" },
+        _react2.default.createElement(
+          "div",
+          null,
+          "Entries"
+        ),
         _react2.default.createElement(
           "div",
           null,
@@ -246,6 +278,10 @@ var _Home = __webpack_require__(/*! ./Home */ "./app/components/Home.js");
 
 var _Home2 = _interopRequireDefault(_Home);
 
+var _About = __webpack_require__(/*! ./About */ "./app/components/About.js");
+
+var _About2 = _interopRequireDefault(_About);
+
 var _AllEntries = __webpack_require__(/*! ./AllEntries */ "./app/components/AllEntries.js");
 
 var _AllEntries2 = _interopRequireDefault(_AllEntries);
@@ -263,7 +299,20 @@ var Routes = function Routes() {
     _react2.default.createElement(
       "div",
       null,
-      _react2.default.createElement("nav", null),
+      _react2.default.createElement(
+        "nav",
+        null,
+        _react2.default.createElement(
+          _reactRouterDom.Link,
+          { to: "/entries" },
+          "Past Entries"
+        ),
+        _react2.default.createElement(
+          _reactRouterDom.Link,
+          { to: "/about" },
+          "About"
+        )
+      ),
       _react2.default.createElement(
         "main",
         null,
@@ -271,6 +320,7 @@ var Routes = function Routes() {
           _reactRouterDom.Switch,
           null,
           _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: "/", component: _Home2.default }),
+          _react2.default.createElement(_reactRouterDom.Route, { path: "/about", component: _About2.default }),
           _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: "/entries", component: _AllEntries2.default }),
           _react2.default.createElement(_reactRouterDom.Route, { path: "/entries/:id", component: _SingleEntry2.default })
         )

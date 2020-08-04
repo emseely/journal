@@ -16,7 +16,8 @@ class AllEntries extends React.Component {
     console.log(entries);
 
     return (
-      <div>
+      <div className="all">
+        <div>Entries</div>
         <div>
           {entries.map((entry) => (
             <Link to={`/entries/${entry.id}`} key={entry.id}>
