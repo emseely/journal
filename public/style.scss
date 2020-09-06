@@ -1,0 +1,134 @@
+body {
+  background-color: #2aad63;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  font-family: "Rubik", sans-serif;
+}
+
+#root {
+  height: 100%;
+  width: 100%;
+}
+
+#app {
+  height: 100%;
+  width: 100%;
+}
+
+main {
+  background-color: #0073fe;
+}
+
+nav {
+  background-color: #0073fe;
+  max-width: 100%;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1em;
+  div {
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+  a {
+    padding: 0 20px;
+    font-size: 24pt;
+    color: rgb(241, 241, 89);
+    &:hover {
+      color: #35fa80;
+    }
+  }
+  .navDropdown {
+    position: relative;
+    padding: 0 20px;
+    display: flex;
+
+    flex-direction: column;
+
+    .navDropButton {
+      font-size: 24pt;
+      color: rgb(241, 241, 89);
+      &:hover {
+        color: #0c0475;
+      }
+    }
+    .navDropContent {
+      display: none;
+      z-index: 1;
+      position: absolute;
+      top: 40px;
+      width: 70%;
+      a {
+        display: block;
+        padding: 5px 0;
+        font-size: 16pt;
+      }
+    }
+    &:hover {
+      .navDropContent {
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        background: #0c0475;
+        // border: 2px solid #0c0475;
+        border-radius: 10px;
+        padding: 3px;
+        color: black;
+      }
+    }
+  }
+}
+
+a {
+  text-decoration: none;
+}
+
+.all {
+  font-size: 20pt;
+  color: white;
+  text-shadow: 2px 2px 5px rgb(255, 255, 255);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 100px 0 150px;
+  a {
+    color: white;
+  }
+}
+
+.single {
+  background-color: #2aad63;
+  font-size: 20pt;
+  color: rgb(38, 31, 7);
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  max-width: 60vw;
+  text-align: left;
+  margin-left: 10vw;
+  padding-top: 60px;
+}
+
+.single img {
+  max-width: 200px;
+}
+
+.entryInfo {
+}
+.entryContent {
+}
+
+#footer {
+  background-color: #2aad63;
+  width: 100vw;
+
+  display: block;
+
+  justify-content: flex-end;
+}
