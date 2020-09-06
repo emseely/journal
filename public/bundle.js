@@ -86,6 +86,49 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./app/App.js":
+/*!********************!*\
+  !*** ./app/App.js ***!
+  \********************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = App;
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+var _components = __webpack_require__(/*! ./components */ "./app/components/index.js");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function App() {
+  return _react2.default.createElement(
+    "div",
+    { id: "app" },
+    _react2.default.createElement(_components.Nav, null),
+    _react2.default.createElement(
+      "div",
+      { id: "main" },
+      _react2.default.createElement(_components.Routes, null)
+    ),
+    _react2.default.createElement(_components.Footer, null)
+  );
+}
+
+/***/ }),
+
 /***/ "./app/components/About.js":
 /*!*********************************!*\
   !*** ./app/components/About.js ***!
@@ -214,6 +257,43 @@ exports.default = (0, _reactRedux.connect)(mapState, mapDispatch)(AllEntries);
 
 /***/ }),
 
+/***/ "./app/components/Footer.js":
+/*!**********************************!*\
+  !*** ./app/components/Footer.js ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = Footer;
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function Footer() {
+  return _react2.default.createElement(
+    "footer",
+    null,
+    _react2.default.createElement(
+      "h3",
+      null,
+      "Footer"
+    )
+  );
+}
+
+/***/ }),
+
 /***/ "./app/components/Home.js":
 /*!********************************!*\
   !*** ./app/components/Home.js ***!
@@ -239,14 +319,92 @@ function Home() {
   return _react2.default.createElement(
     "div",
     { id: "home" },
-    _react2.default.createElement("nav", null),
     _react2.default.createElement(
-      "main",
+      "div",
+      null,
+      "Journal in the works!"
+    )
+  );
+}
+
+/***/ }),
+
+/***/ "./app/components/Nav.js":
+/*!*******************************!*\
+  !*** ./app/components/Nav.js ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = Nav;
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function Nav() {
+  return _react2.default.createElement(
+    "nav",
+    null,
+    _react2.default.createElement(
+      "div",
+      null,
+      _react2.default.createElement(
+        _reactRouterDom.Link,
+        { to: "/" },
+        "Home"
+      )
+    ),
+    _react2.default.createElement(
+      "div",
       null,
       _react2.default.createElement(
         "div",
-        null,
-        "Journal in the works!"
+        { className: "navDropdown" },
+        _react2.default.createElement(
+          "div",
+          { className: "navDropButton" },
+          "Web Dev"
+        ),
+        _react2.default.createElement(
+          "div",
+          { className: "navDropContent" },
+          _react2.default.createElement(
+            _reactRouterDom.Link,
+            { to: "/team" },
+            "Team"
+          ),
+          _react2.default.createElement(
+            _reactRouterDom.Link,
+            { to: "/solo" },
+            "Solo"
+          ),
+          _react2.default.createElement(
+            _reactRouterDom.Link,
+            { to: "/design" },
+            "UI Design"
+          )
+        )
+      ),
+      _react2.default.createElement(
+        _reactRouterDom.Link,
+        { to: "/art" },
+        "Offline"
+      ),
+      _react2.default.createElement(
+        _reactRouterDom.Link,
+        { to: "/about" },
+        "About"
       )
     )
   );
@@ -274,57 +432,20 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
 
-var _Home = __webpack_require__(/*! ./Home */ "./app/components/Home.js");
-
-var _Home2 = _interopRequireDefault(_Home);
-
-var _About = __webpack_require__(/*! ./About */ "./app/components/About.js");
-
-var _About2 = _interopRequireDefault(_About);
-
-var _AllEntries = __webpack_require__(/*! ./AllEntries */ "./app/components/AllEntries.js");
-
-var _AllEntries2 = _interopRequireDefault(_AllEntries);
-
-var _SingleEntry = __webpack_require__(/*! ./SingleEntry */ "./app/components/SingleEntry.js");
-
-var _SingleEntry2 = _interopRequireDefault(_SingleEntry);
+var _index = __webpack_require__(/*! ./index */ "./app/components/index.js");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Routes = function Routes() {
   return _react2.default.createElement(
-    _reactRouterDom.BrowserRouter,
+    "div",
     null,
     _react2.default.createElement(
-      "div",
+      _reactRouterDom.Switch,
       null,
-      _react2.default.createElement(
-        "nav",
-        null,
-        _react2.default.createElement(
-          _reactRouterDom.Link,
-          { to: "/entries" },
-          "Past Entries"
-        ),
-        _react2.default.createElement(
-          _reactRouterDom.Link,
-          { to: "/about" },
-          "About"
-        )
-      ),
-      _react2.default.createElement(
-        "main",
-        null,
-        _react2.default.createElement(
-          _reactRouterDom.Switch,
-          null,
-          _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: "/", component: _Home2.default }),
-          _react2.default.createElement(_reactRouterDom.Route, { path: "/about", component: _About2.default }),
-          _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: "/entries", component: _AllEntries2.default }),
-          _react2.default.createElement(_reactRouterDom.Route, { path: "/entries/:id", component: _SingleEntry2.default })
-        )
-      )
+      _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: "/", component: _index.Home }),
+      _react2.default.createElement(_reactRouterDom.Route, { path: "/about", component: _index.About }),
+      _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: "/entries", component: _index.AllEntries })
     )
   );
 };
@@ -442,6 +563,87 @@ exports.default = (0, _reactRedux.connect)(mapState, mapDispatch)(SingleEntry);
 
 /***/ }),
 
+/***/ "./app/components/index.js":
+/*!*********************************!*\
+  !*** ./app/components/index.js ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _Nav = __webpack_require__(/*! ./Nav */ "./app/components/Nav.js");
+
+Object.defineProperty(exports, "Nav", {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_Nav).default;
+  }
+});
+
+var _Footer = __webpack_require__(/*! ./Footer */ "./app/components/Footer.js");
+
+Object.defineProperty(exports, "Footer", {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_Footer).default;
+  }
+});
+
+var _AllEntries = __webpack_require__(/*! ./AllEntries */ "./app/components/AllEntries.js");
+
+Object.defineProperty(exports, "AllEntries", {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_AllEntries).default;
+  }
+});
+
+var _SingleEntry = __webpack_require__(/*! ./SingleEntry */ "./app/components/SingleEntry.js");
+
+Object.defineProperty(exports, "SingleEntry", {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_SingleEntry).default;
+  }
+});
+
+var _About = __webpack_require__(/*! ./About */ "./app/components/About.js");
+
+Object.defineProperty(exports, "About", {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_About).default;
+  }
+});
+
+var _Routes = __webpack_require__(/*! ./Routes */ "./app/components/Routes.js");
+
+Object.defineProperty(exports, "Routes", {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_Routes).default;
+  }
+});
+
+var _Home = __webpack_require__(/*! ./Home */ "./app/components/Home.js");
+
+Object.defineProperty(exports, "Home", {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_Home).default;
+  }
+});
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/***/ }),
+
 /***/ "./app/main.js":
 /*!*********************!*\
   !*** ./app/main.js ***!
@@ -462,25 +664,29 @@ var _reactDom2 = _interopRequireDefault(_reactDom);
 
 var _reactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 
-var _Routes = __webpack_require__(/*! ./components/Routes */ "./app/components/Routes.js");
+var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
 
-var _Routes2 = _interopRequireDefault(_Routes);
+__webpack_require__(/*! ../public/style.scss */ "./public/style.scss");
 
 var _store = __webpack_require__(/*! ./store */ "./app/store.js");
 
 var _store2 = _interopRequireDefault(_store);
 
-__webpack_require__(/*! ../public/style.scss */ "./public/style.scss");
+var _App = __webpack_require__(/*! ./App.js */ "./app/App.js");
+
+var _App2 = _interopRequireDefault(_App);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-// import Routes from "./components/Routes";
 
 _reactDom2.default.render(_react2.default.createElement(
   _reactRedux.Provider,
   { store: _store2.default },
-  _react2.default.createElement(_Routes2.default, null)
-), document.getElementById("app"));
+  _react2.default.createElement(
+    _reactRouterDom.BrowserRouter,
+    null,
+    _react2.default.createElement(_App2.default, null)
+  )
+), document.getElementById("root"));
 
 /***/ }),
 
@@ -13859,7 +14065,7 @@ module.exports = __webpack_require__(/*! ./modules/_core */ "./node_modules/core
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "body {\n  background-color: #2aad63;\n  height: 100vh;\n  padding: 0;\n  margin: 0;\n  width: 100vw;\n  font-family: \"Rubik\", sans-serif;\n}\n\nmain {\n  background-color: #0073fe;\n}\n\nnav {\n  background-color: #0073fe;\n  width: 100vw;\n  height: 100px;\n  display: flex;\n  align-items: center;\n  justify-content: flex-end;\n}\n\nnav a {\n  font-size: 24pt;\n  color: #f1f159;\n}\n\na {\n  text-decoration: none;\n}\n\n.all {\n  font-size: 20pt;\n  color: white;\n  text-shadow: 2px 2px 5px white;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  padding: 100px 0 150px;\n}\n.all a {\n  color: white;\n}\n\n.single {\n  background-color: #2aad63;\n  font-size: 20pt;\n  color: #261f07;\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  max-width: 60vw;\n  text-align: left;\n  margin-left: 10vw;\n  padding-top: 60px;\n}\n\n.single img {\n  max-width: 200px;\n}\n\n#navLinks {\n  width: 30vw;\n  display: flex;\n  justify-content: space-evenly;\n  margin-right: 20px;\n}\n\n#footer {\n  background-color: #2aad63;\n  width: 100vw;\n  display: block;\n  justify-content: flex-end;\n}", ""]);
+exports.push([module.i, "body {\n  background-color: #2aad63;\n  height: 100%;\n  padding: 0;\n  margin: 0;\n  width: 100%;\n  font-family: \"Rubik\", sans-serif;\n}\n\n#root {\n  height: 100%;\n  width: 100%;\n}\n\n#app {\n  height: 100%;\n  width: 100%;\n}\n\nmain {\n  background-color: #0073fe;\n}\n\nnav {\n  background-color: #0073fe;\n  max-width: 100%;\n  height: 100px;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  padding: 0 1em;\n}\nnav div {\n  width: fit-content;\n  display: flex;\n  align-items: center;\n  justify-content: space-evenly;\n}\nnav a {\n  padding: 0 20px;\n  font-size: 24pt;\n  color: #f1f159;\n}\nnav a:hover {\n  color: #35fa80;\n}\nnav .navDropdown {\n  position: relative;\n  padding: 0 20px;\n  display: flex;\n  flex-direction: column;\n}\nnav .navDropdown .navDropButton {\n  font-size: 24pt;\n  color: #f1f159;\n}\nnav .navDropdown .navDropButton:hover {\n  color: #0c0475;\n}\nnav .navDropdown .navDropContent {\n  display: none;\n  z-index: 1;\n  position: absolute;\n  top: 40px;\n  width: 70%;\n}\nnav .navDropdown .navDropContent a {\n  display: block;\n  padding: 5px 0;\n  font-size: 16pt;\n}\nnav .navDropdown:hover .navDropContent {\n  z-index: 1;\n  display: flex;\n  flex-direction: column;\n  background: #0c0475;\n  border-radius: 10px;\n  padding: 3px;\n  color: black;\n}\n\na {\n  text-decoration: none;\n}\n\n.all {\n  font-size: 20pt;\n  color: white;\n  text-shadow: 2px 2px 5px white;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  padding: 100px 0 150px;\n}\n.all a {\n  color: white;\n}\n\n.single {\n  background-color: #2aad63;\n  font-size: 20pt;\n  color: #261f07;\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  max-width: 60vw;\n  text-align: left;\n  margin-left: 10vw;\n  padding-top: 60px;\n}\n\n.single img {\n  max-width: 200px;\n}\n\n#footer {\n  background-color: #2aad63;\n  width: 100vw;\n  display: block;\n  justify-content: flex-end;\n}", ""]);
 // Exports
 module.exports = exports;
 
