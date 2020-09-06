@@ -4,6 +4,7 @@ import { Provider } from "react-redux";
 import Routes from "./components/Routes";
 
 import store from "./store";
+import "../public/style.scss";
 // import Routes from "./components/Routes";
 
 ReactDOM.render(
