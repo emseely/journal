@@ -17,8 +17,10 @@ body {
   width: 100%;
 }
 
-main {
+#main {
   background-color: #0073fe;
+  height: 70vh;
+  width: 100%;
 }
 
 nav {
@@ -81,6 +83,25 @@ nav {
         color: black;
       }
     }
+  }
+}
+
+footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+  justify-content: space-between;
+  height: 12vh;
+  max-height: 200px;
+  padding: 1em 2em;
+  div {
+    max-width: 30vw;
+  }
+  a {
+    display: flex;
+
+    align-items: center;
   }
 }
 
